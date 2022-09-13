@@ -1,0 +1,74 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+//屏蔽部分不安全警告，加在源文件的第一行
+
+//头文件：include(包含) std-standard-标准 i-input-输入 0-output-输出 .h-头文件(.c-源文件)
+#include<stdio.h>
+
+int num = 10;//全局变量：定义在代码块({})之外的变量,作用域是整个工程，生命周期是整个程序的生命周期
+//主函数：是程序的入口，标志着程序代码的开始(int：表示最终返回一个整形)，有且仅有一个
+int main()
+{
+	printf("Hellow Bit!\n");
+	//print-打印 f-function-函数 /n-打印后换行
+	//转换说明：%c-打印字符格式数据 %d-打印整形十进制数据 %f-打印浮点型 %p-以地址形式进行打印 %x-打印16进制数字 %o-打印8进制数字
+	printf(" char = %d\n", sizeof(char));
+	//size-大小 of-关于 sizeof-计算该类型向内存申请空间所能申请空间的大小
+	//计算机中的单位：bit-比特位 byte-字节-1byte=8bit kb-1kb=2^10byte mb-1mb=2^10kb gb-1gb=2^10mb tb-1tb=2^10gb pb-1pb=2^10tb
+	printf(" short = %d\n", sizeof(short));
+	printf(" int = %d\n", sizeof(int));
+	printf(" long = %d\n", sizeof(long));
+	printf(" long long = %d\n", sizeof(long long));
+	printf(" float = %d\n", sizeof(float));
+	printf(" double = %d\n", sizeof(double));
+	
+	int num = 10;//局部变量：定义在代码块({})之内的变量，作用域是变量所在的局部范围，生命周期是自进入作用域，至作用域结束
+	printf("%d\n", num);
+	//当同时存在相同名称的全局变量和局部变量时(建议变量名不要相同，易产生bug)，局部变量优先
+
+	//计算两个数的和
+	int num1 = 0;
+	int num2 = 0;
+	scanf("%d", &num1);
+	scanf("%d", &num2);
+	//scan：输入 &：取地址符号-将输入的值放在指定地址处
+	//scanf返回值被忽略：scanf()在读取时不检查边界，可能会造成内存泄漏,于是Microsoft公司在VS编译器中提供了scanf_s()
+	//返回值被忽略：或使用：#define _CRT_SECURE_NO_WARNINGS 1
+	int sum = num1 + num2;
+	//求和算法
+	printf("Sum = %d\n", sum);
+
+	//常量：1.字面常量；2.const修饰的常变量(具有常属性的变量，本质上仍然是变量)；3.#define定义的标识符常量；4.枚举常量
+	//字面常量：
+	3.14;
+
+	//const修饰的常变量：
+	const int num3 = 3;
+	//const：常属性
+	printf("%d\n", num3);
+	//若此时再写下 ‘num3 = 8;’则报错
+
+	//#define定义的标识符常量：
+    #define MAX 10
+	//此时的MAX本质即为常量
+	int arr[MAX] = { 0 };
+	printf("%d\n",MAX);
+
+	//枚举常量：
+	//枚举：即一一列举，关键字为‘enum’
+	//以性别为列的枚举使用法：
+	enum Sex
+	{
+		Male,
+		Female,
+		Secret
+	};//此处的‘;’不可省略
+	//则枚举常量为Male(男性)、Female(女性)、Secret(保密)
+	//枚举常量不可更改，但由枚举常量创建的变量可以更改
+	printf("%d\n", Male);
+	printf("%d\n", Female);
+	printf("%d\n", Secret);
+
+	return 0;
+}
+//数据类型：char-字符数据类型 short-短整型 int-整形 long-长整型 long long-更长整型 float-单精度浮点数 double-双精度浮点数
+//目的：对应数字对应类型，较少内存消耗
